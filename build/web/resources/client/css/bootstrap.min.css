@@ -4385,7 +4385,7 @@ fieldset:disabled .btn {
 .nav-link {
     display: block;
     padding: .5rem 1rem;
-    color: #81c408;
+    color: #00E0C7;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out
 }
 
@@ -4397,7 +4397,7 @@ fieldset:disabled .btn {
 
 .nav-link:hover,
 .nav-link:focus {
-    color: #679d06
+    color: #009394;
 }
 
 .nav-link.disabled {

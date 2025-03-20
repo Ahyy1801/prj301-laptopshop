@@ -7,8 +7,8 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="Hỏi Dân IT - Dự án laptopshop" />
-        <meta name="author" content="Hỏi Dân IT" />
+        <meta name="description" content="Dự án laptopshop" />
+        <meta name="author" content="SE1927" />
         <title>Dashboard - Update Product</title>
         <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
         <link href="${pageContext.request.contextPath}/resources/admin/css/styles.css" rel="stylesheet" />
@@ -94,7 +94,7 @@
                                         <!-- Sold -->
                                         <div class="mb-3 col-12 col-md-6">
                                             <label class="form-label">Sold:</label>
-                                            <input type="number" class="form-control" name="sold" value="${p.sold}" min="0" step="1" />
+SE1927                                            <input type="number" class="form-control" name="sold" value="${p.sold}" min="0" step="1" />
                                         </div>
 
                                         <!-- Factory -->
@@ -176,13 +176,13 @@
                                         </div>
 
                                         <!-- Detail Description -->
-                                        <div class="mb-3">
+<!--                                        <div class="mb-3">
                                             <label class="form-label">Detail description:</label>
                                             <textarea class="form-control" id="detailDesc" name="detailDesc" rows="3" style="resize: vertical; max-height: 200px;">${p.detailDesc}</textarea>
                                             <script>
             CKEDITOR.replace('detailDesc'); // Kích hoạt CKEditor cho textarea
                                             </script>
-                                        </div>
+                                        </div>-->
 
                                         <!-- Các trường khác -->
                                         <input type="hidden" name="image" value="${p.image}" />

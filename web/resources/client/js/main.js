@@ -11,7 +11,6 @@
     };
     spinner(0);
 
-
     // Fixed Navbar
     $(window).scroll(function () {
         if ($(window).width() < 992) {
@@ -29,7 +28,6 @@
         }
     });
 
-
     // Back to top button
     $(window).scroll(function () {
         if ($(this).scrollTop() > 300) {
@@ -42,7 +40,6 @@
         $('html, body').animate({ scrollTop: 0 }, 1500, 'easeInOutExpo');
         return false;
     });
-
 
     // Testimonial carousel
     $(".testimonial-carousel").owlCarousel({
@@ -59,26 +56,15 @@
         ],
         responsiveClass: true,
         responsive: {
-            0: {
-                items: 1
-            },
-            576: {
-                items: 1
-            },
-            768: {
-                items: 1
-            },
-            992: {
-                items: 2
-            },
-            1200: {
-                items: 2
-            }
+            0: { items: 1 },
+            576: { items: 1 },
+            768: { items: 1 },
+            992: { items: 2 },
+            1200: { items: 2 }
         }
     });
 
-
-    // vegetable carousel
+    // Vegetable carousel
     $(".vegetable-carousel").owlCarousel({
         autoplay: true,
         smartSpeed: 1500,
@@ -93,24 +79,13 @@
         ],
         responsiveClass: true,
         responsive: {
-            0: {
-                items: 1
-            },
-            576: {
-                items: 1
-            },
-            768: {
-                items: 2
-            },
-            992: {
-                items: 3
-            },
-            1200: {
-                items: 4
-            }
+            0: { items: 1 },
+            576: { items: 1 },
+            768: { items: 2 },
+            992: { items: 3 },
+            1200: { items: 4 }
         }
     });
-
 
     // Modal Video
     $(document).ready(function () {
@@ -121,48 +96,37 @@
         console.log($videoSrc);
 
         $('#videoModal').on('shown.bs.modal', function (e) {
-            $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0");
-        })
+            $("#video").attr('src', $videoSrc + "?autoplay=1&modestbranding=1&showinfo=0");
+        });
 
         $('#videoModal').on('hide.bs.modal', function (e) {
             $("#video").attr('src', $videoSrc);
-        })
+        });
 
-        //add active class to header
+        // Add active class to header
         const navElement = $("#navbarCollapse");
         const currentUrl = window.location.pathname;
         navElement.find('a.nav-link').each(function () {
-            const link = $(this); // Get the current link in the loop
-            const href = link.attr('href'); // Get the href attribute of the link
-
+            const link = $(this);
+            const href = link.attr('href');
             if (href === currentUrl) {
-                link.addClass('active'); // Add 'active' class if the href matches the current URL
+                link.addClass('active');
             } else {
-                link.removeClass('active'); // Remove 'active' class if the href does not match
+                link.removeClass('active');
             }
         });
+
+        // Tự động đánh dấu nút price-filter-btn active khi tải trang
+        const params = new URLSearchParams(window.location.search);
+        const currentPrice = params.get('price');
+        if (currentPrice) {
+            $(`.price-filter-btn[data-max="${currentPrice}"]`).addClass('active');
+        }
     });
 
-
-
     // Product Quantity
-    // $('.quantity button').on('click', function () {
-    //     var button = $(this);
-    //     var oldValue = button.parent().parent().find('input').val();
-    //     if (button.hasClass('btn-plus')) {
-    //         var newVal = parseFloat(oldValue) + 1;
-    //     } else {
-    //         if (oldValue > 0) {
-    //             var newVal = parseFloat(oldValue) - 1;
-    //         } else {
-    //             newVal = 0;
-    //         }
-    //     }
-    //     button.parent().parent().find('input').val(newVal);
-    // });
     $('.quantity button').on('click', function () {
         let change = 0;
-
         var button = $(this);
         var oldValue = button.parent().parent().find('input').val();
         if (button.hasClass('btn-plus')) {
@@ -179,26 +143,19 @@
         const input = button.parent().parent().find('input');
         input.val(newVal);
 
-        //set form index
-        const index = input.attr("data-cart-detail-index")
+        const index = input.attr("data-cart-detail-index");
         const el = document.getElementById(`cartDetails${index}.quantity`);
         $(el).val(newVal);
 
-
-
-        //get price
         const price = input.attr("data-cart-detail-price");
         const id = input.attr("data-cart-detail-id");
-
         const priceElement = $(`p[data-cart-detail-id='${id}']`);
         if (priceElement) {
             const newPrice = +price * newVal;
             priceElement.text(formatCurrency(newPrice.toFixed(2)) + " đ");
         }
 
-        //update total cart price
         const totalPriceElement = $(`p[data-cart-total-price]`);
-
         if (totalPriceElement && totalPriceElement.length) {
             const currentTotal = totalPriceElement.first().attr("data-cart-total-price");
             let newTotal = +currentTotal;
@@ -207,68 +164,52 @@
             } else {
                 newTotal = change * (+price) + (+currentTotal);
             }
-
-            //reset change
             change = 0;
-
-            //update
-            totalPriceElement?.each(function (index, element) {
-                //update text
+            totalPriceElement.each(function (index, element) {
                 $(totalPriceElement[index]).text(formatCurrency(newTotal.toFixed(2)) + " đ");
-
-                //update data-attribute
                 $(totalPriceElement[index]).attr("data-cart-total-price", newTotal);
             });
         }
     });
 
     function formatCurrency(value) {
-        // Use the 'vi-VN' locale to format the number according to Vietnamese currency format
-        // and 'VND' as the currency type for Vietnamese đồng
         const formatter = new Intl.NumberFormat('vi-VN', {
             style: 'decimal',
-            minimumFractionDigits: 0, // No decimal part for whole numbers
+            minimumFractionDigits: 0,
         });
-
         let formatted = formatter.format(value);
-        // Replace dots with commas for thousands separator
         formatted = formatted.replace(/\./g, ',');
         return formatted;
     }
 
-    //handle filter products
+    // Handle filter products
     $('#btnFilter').click(function (event) {
         event.preventDefault();
 
         let factoryArr = [];
         let targetArr = [];
         let priceArr = [];
-        //factory filter
+
         $("#factoryFilter .form-check-input:checked").each(function () {
             factoryArr.push($(this).val());
         });
 
-        //target filter
         $("#targetFilter .form-check-input:checked").each(function () {
             targetArr.push($(this).val());
         });
 
-        //price filter
         $("#priceFilter .form-check-input:checked").each(function () {
             priceArr.push($(this).val());
         });
 
-        //sort order
         let sortValue = $('input[name="radio-sort"]:checked').val();
 
         const currentUrl = new URL(window.location.href);
         const searchParams = currentUrl.searchParams;
 
-        // Add or update query parameters
         searchParams.set('page', '1');
         searchParams.set('sort', sortValue);
 
-        //reset
         searchParams.delete('factory');
         searchParams.delete('target');
         searchParams.delete('price');
@@ -285,15 +226,28 @@
             searchParams.set('price', priceArr.join(','));
         }
 
-        // Update the URL and reload the page
         window.location.href = currentUrl.toString();
     });
 
-    //handle auto checkbox after page loading
-    // Parse the URL parameters
+    // Handle price filter buttons
+    $('.price-filter-btn').click(function () {
+        $('.price-filter-btn').removeClass('active'); // Xóa class active từ các nút khác
+        $(this).addClass('active'); // Thêm class active cho nút được nhấp
+
+        const maxPrice = $(this).data('max'); // Lấy giá trị tối đa từ data-max
+
+        const currentUrl = new URL(window.location.href);
+        const searchParams = currentUrl.searchParams;
+
+        searchParams.set('page', '1'); // Reset về trang 1
+        searchParams.set('price', maxPrice); // Đặt tham số price giống như range input
+
+        window.location.href = currentUrl.toString(); // Tải lại trang với URL mới
+    });
+
+    // Handle auto checkbox after page loading
     const params = new URLSearchParams(window.location.search);
 
-    // Set checkboxes for 'factory'
     if (params.has('factory')) {
         const factories = params.get('factory').split(',');
         factories.forEach(factory => {
@@ -301,7 +255,6 @@
         });
     }
 
-    // Set checkboxes for 'target'
     if (params.has('target')) {
         const targets = params.get('target').split(',');
         targets.forEach(target => {
@@ -309,7 +262,6 @@
         });
     }
 
-    // Set checkboxes for 'price'
     if (params.has('price')) {
         const prices = params.get('price').split(',');
         prices.forEach(price => {
@@ -317,15 +269,12 @@
         });
     }
 
-    // Set radio buttons for 'sort'
     if (params.has('sort')) {
         const sort = params.get('sort');
         $(`input[type="radio"][name="radio-sort"][value="${sort}"]`).prop('checked', true);
     }
 
-
-    //////////////////////////
-    //handle add to cart with ajax
+    // Handle add to cart with ajax
     $('.btnAddToCartHomepage').click(function (event) {
         event.preventDefault();
 
@@ -335,7 +284,7 @@
                 text: 'Bạn cần đăng nhập tài khoản',
                 position: 'top-right',
                 icon: 'error'
-            })
+            });
             return;
         }
 
@@ -351,25 +300,19 @@
             type: "POST",
             data: JSON.stringify({ quantity: 1, productId: productId }),
             contentType: "application/json",
-
             success: function (response) {
                 const sum = +response;
-                //update cart
-                $("#sumCart").text(sum)
-                //show message
+                $("#sumCart").text(sum);
                 $.toast({
                     heading: 'Giỏ hàng',
                     text: 'Thêm sản phẩm vào giỏ hàng thành công',
                     position: 'top-right',
-
-                })
-
+                });
             },
             error: function (response) {
-                alert("có lỗi xảy ra, check code đi ba :v")
+                alert("có lỗi xảy ra, check code đi ba :v");
                 console.log("error: ", response);
             }
-
         });
     });
 
@@ -381,7 +324,7 @@
                 text: 'Bạn cần đăng nhập tài khoản',
                 position: 'top-right',
                 icon: 'error'
-            })
+            });
             return;
         }
 
@@ -397,25 +340,19 @@
             type: "POST",
             data: JSON.stringify({ quantity: quantity, productId: productId }),
             contentType: "application/json",
-
             success: function (response) {
                 const sum = +response;
-                //update cart
-                $("#sumCart").text(sum)
-                //show message
+                $("#sumCart").text(sum);
                 $.toast({
                     heading: 'Giỏ hàng',
                     text: 'Thêm sản phẩm vào giỏ hàng thành công',
                     position: 'top-right',
-
-                })
-
+                });
             },
             error: function (response) {
-                alert("có lỗi xảy ra, check code đi ba :v")
+                alert("có lỗi xảy ra, check code đi ba :v");
                 console.log("error: ", response);
             }
-
         });
     });
 
@@ -429,4 +366,3 @@
     }
 
 })(jQuery);
-
