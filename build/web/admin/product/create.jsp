@@ -7,8 +7,8 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="Vũ Duy Lê - Dự án laptopshop" />
-        <meta name="author" content="Vũ Duy Lê" />
+        <meta name="description" content="Văn Huy - Dự án laptopshop" />
+        <meta name="author" content="Cao Văn Huy" />
         <title>Dashboard - Create Product</title>
         <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
         <link href="${pageContext.request.contextPath}/resources/admin/css/styles.css" rel="stylesheet" />
@@ -167,14 +167,14 @@
                                         </div>
 
                                         <!-- Detail Description -->
-                                        <div class="mb-3">
+<!--                                        <div class="mb-3">
                                             <label class="form-label">Detail description:</label>
                                             <textarea class="form-control" id="detailDesc" name="detailDesc" rows="3"
                                                       style="resize: vertical; max-height: 200px;"></textarea>
                                             <script>
             CKEDITOR.replace('detailDesc'); // Kích hoạt CKEditor cho textarea
                                             </script>     
-                                        </div>
+                                        </div>-->
 
                                         <!-- Images -->
                                         <div class="mb-3 col-12 col-md-6">

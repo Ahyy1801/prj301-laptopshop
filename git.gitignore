@@ -1,0 +1,48 @@
+# Thư mục NetBeans
+nbproject/
+nbbuild/
+build/
+dist/
+nbactions.xml
+nb-configuration.xml
+.private/
+
+# Thư mục biên dịch
+*.class
+*.jar
+*.war
+*.ear
+
+# Tệp tạm thời của IDE
+*.log
+*.cache
+*.history
+hs_err_pid*
+
+# Thư mục đầu ra của Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# Thư mục đầu ra của Gradle
+.gradle/
+build/
+
+# Thư viện tải xuống của Maven và Gradle
+.mvn/
+!/.mvn/wrapper/maven-wrapper.jar
+!/.mvn/wrapper/maven-wrapper.properties
+
+# Tệp cấu hình của hệ điều hành
+Thumbs.db
+.DS_Store
+*.swp
+*.swo
+
+# Tệp môi trường & credential
+.env
+*.key
+*.pem
