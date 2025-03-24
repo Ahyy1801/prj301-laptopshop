@@ -32,7 +32,7 @@
                             <div class="row">
                                 <div class="col-md-6 col-12 mx-auto">
                                     <div class="d-flex justify-content-between">
-                                        <h3>Delete the product with id = ${id}</h3>
+                                        <h3>Delete the product with ID = ${id}</h3>
                                     </div>
 
                                     <hr />
@@ -42,7 +42,7 @@
                                     <form method="post" action="delete"
                                           modelAttribute="newProduct">
                                         <div class="mb-3" style="display: none;">
-                                            <label class=" form-label">Id:</label>
+                                            <label class=" form-label">ID:</label>
                                             <input type="text" class="form-control" name="id" value="${id}"
                                                    readonly="true" />
                                         </div>

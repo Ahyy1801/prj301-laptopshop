@@ -33,7 +33,7 @@
                             <div class="row">
                                 <div class="col-12 mx-auto">
                                     <div class="d-flex justify-content-between">
-                                        <h3>Table product</h3>
+                                        <h3>Products Table</h3>
                                         <a href="/laptopshop/admin/product/create" class="btn btn-primary">Create new
                                             product</a>
                                     </div>
@@ -60,18 +60,16 @@
                                                     <td>${product.factory}</td>
                                                     <td>
                                                         <a href="/laptopshop/admin/product/detail?id=${id}"
-                                                           class="btn btn-success">View</a>
+                                                           class="btn btn-success mx-2">View</a>
                                                         <a href="/laptopshop/admin/product/update?id=${id}"
                                                            class="btn btn-warning mx-2">Update</a>
-                                                        
+                                                        <a href="/laptopshop/admin/product/delete?id=${id}"
+                                                           class="btn btn-danger mx-2">Delete</a>
                                                     </td>
                                                 </tr>
                                             </c:forEach>
-
                                         </tbody>
-
                                     </table>
-
                                 </div>
                             </div>
                         </div>
@@ -80,6 +78,7 @@
                 <jsp:include page="../layout/footer.jsp" />
             </div>
         </div>
+            
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
         <script src="${pageContext.request.contextPath}/resources/admin/css/styles.css"></script>
