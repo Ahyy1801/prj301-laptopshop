@@ -161,7 +161,7 @@
                             </form>
                         </div>
                         <div class="signup-image">
-                            <figure><img src="${pageContext.request.contextPath}/resources/login/images/signup-image.jpg" alt="sing up image"></figure>
+                            <figure><img src="${pageContext.request.contextPath}/resources/login/images/hinhnensignup.jpg" alt="sing up image"></figure>
                             <a href="/laptopshop/login" class="signup-image-link">I am already member</a>
                         </div>
                     </div>

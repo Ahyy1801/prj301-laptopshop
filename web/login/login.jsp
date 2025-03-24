@@ -62,7 +62,7 @@
                 <div class="container">
                     <div class="signin-content">
                         <div class="signin-image">
-                            <figure><img src="${pageContext.request.contextPath}/resources/login/images/signin-image.jpg" alt="sing up image"></figure>
+                            <figure><img src="${pageContext.request.contextPath}/resources/login/images/hinhnensignin.jpg" alt="sing up image"></figure>
                             <a href="/laptopshop/register" class="signup-image-link">Create an account</a>
                         </div>
 
